@@ -7,7 +7,7 @@ const { Debug } = bot;
 
 const start = async () => {
     try {
-        console.log(`Starting ${BOT_NAME} ${VERSION}`);
+        console.log(`Starting Ayanokoji-md ${VERSION}`);
 
         console.time('Initialization');
         await bot.init();
