@@ -1,13 +1,13 @@
 const bot = require(__dirname + '/lib/amd');
 const { VERSION } = require(__dirname + '/config');
-const { botname } = require(__dirname + '/config');
+const { BOT_NAME } = require(__dirname + '/config');
 
 // Assuming bot provides a logging/debugging tool
 const { Debug } = bot;
 
 const start = async () => {
     try {
-        console.log(`Starting ${botname} ${VERSION}`);
+        console.log(`Starting ${BOT_NAME} ${VERSION}`);
 
         console.time('Initialization');
         await bot.init();
