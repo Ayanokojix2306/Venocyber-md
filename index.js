@@ -1,6 +1,6 @@
 const bot = require(__dirname + '/lib/amd');
 const { VERSION } = require(__dirname + '/config');
-const { BOT_NAME } = require(__dirname + '/config');
+const { botname } = require(__dirname + '/config');
 
 // Assuming bot provides a logging/debugging tool
 const { Debug } = bot;
