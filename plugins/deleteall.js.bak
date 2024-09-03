@@ -1,0 +1,49 @@
+const { smd } = require("../lib");
+const { delay } = require("@whiskeysockets/baileys"); // You need this for adding the timer
+const Config = require("../config");
+
+
+smd(
+  {
+    pattern: "clearall",
+    desc: "Deletes all chats after 20 seconds. Reply with 'stop' to cancel.",
+    react: "🗑️",
+    category: "utility",
+    filename: __filename,
+  },
+  async (message, input) => {
+    try {
+      const cancelMessage = await message.reply(
+        "🕒 Clearing all chats in 20 seconds. Reply with 'stop' to cancel."
+      );
+
+      // Wait for 20 seconds before clearing chats
+      for (let i = 0; i < 20; i++) {
+        await delay(1000); // Wait for 1 second (1000 milliseconds)
+
+        // Check if the user replied with "stop"
+        const recentMessages = await message.getRecentMessages({ limit: 5 });
+        if (
+          recentMessages.some(
+            (msg) =>
+              msg.key.remoteJid === message.chat &&
+              msg.message.conversation.toLowerCase() === "stop"
+          )
+        ) {
+          await message.reply("❌ Chat clearing canceled.");
+          return;
+        }
+      }
+
+      // Clear all chats after 20 seconds
+      const chats = await message.client.chats.all();
+      for (const chat of chats) {
+        await message.client.modifyChat(chat.id, "delete");
+      }
+
+      await message.reply("✅ All chats have been cleared.");
+    } catch (error) {
+      await message.reply("❌ Failed to clear chats: " + error.message);
+    }
+  }
+);
