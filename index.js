@@ -1,4 +1,9 @@
-const start = async () => {
+const bot = require(__dirname + '/lib/amd');
+const { VERSION } = require(__dirname + '/config');
+
+// Assuming bot provides a logging/debugging tool
+const { Debug } = bot;
+
     Debug.info(`Starting ayanokoji-md ${VERSION}`)
     try {
         await bot.init();
