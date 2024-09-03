@@ -4,7 +4,8 @@ const { VERSION } = require(__dirname + '/config');
 // Assuming bot provides a logging/debugging tool
 const { Debug } = bot;
 
-    Debug.info(`Starting ayanokoji-md ${VERSION}`)
+const start = async () => {
+    Debug.info(`Starting ayanokoji-md ${VERSION}`);
     try {
         await bot.init();
         console.log('🥰 Ayanokoji-md Bot is initializing...');
@@ -16,10 +17,9 @@ const { Debug } = bot;
         console.log('🤖 Bot connected and ready to go!');
     } catch (error) {
         Debug.error('Oops, something went wrong😶: ' + error);
-        // Optionally, add a delay before retrying or notify and exit
         console.error('Retrying in 5 seconds...');
         setTimeout(start, 5000); // Retry after 5 seconds
     }
 };
 
-start(); // Call the function to start the bot
+start(); // Call the async function to start the bot
