@@ -1,7 +1,7 @@
 {
    "name": "Ayanokoji-md",
    "version": "0.0.1",
-   "description": "Multi device whatsapp bot by kingjux ....",
+   "description": "Multi device whatsapp bot by Ayanokoji....",
    "main": "index.js",
    "type": "commonjs",
    "scripts": {
