@@ -5,7 +5,7 @@ const start = async () => {
     Debug.info(`Starting ayanokoji ${VERSION}`)
   try {
     await bot.init()
-    bot.logger.info('⏳ Database syncing!')
+   // bot.logger.info('⏳ Database syncing!')
     await bot.DATABASE.sync()
     await bot.connect()
   } catch (error) {
