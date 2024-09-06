@@ -4,7 +4,7 @@ const { VERSION } = require(__dirname + '/config')
 const start = async () => {
     Debug.info(`Starting venocyber ${VERSION}`)
   try {
-    await bot.init()
+      await bot.init()
     //bot.logger.info('⏳ Database syncing!')
     await bot.DATABASE.sync()
     await bot.connect()
@@ -13,5 +13,6 @@ const start = async () => {
     start();
   }
 }
+
 start();
 /*
